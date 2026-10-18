@@ -10,6 +10,7 @@ class Encoder:
         if not 0 <= dropout_probability < 1:
             raise ValueError("dropout_probability must be in [0, 1)")
 
+
         self.random_seed = 42
         self.num_heads  =  num_heads
         self.stack_sz = stack_sz
