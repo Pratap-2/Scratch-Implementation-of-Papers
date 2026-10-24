@@ -3,7 +3,13 @@ import numpy as np
 class decoder:
 
     def __init__(self,d_model,num_heads,stack_sz,dropout_probability=0.0):
-        
+        if num_heads <= 0 or stack_sz <= 0 or d_model <= 0:
+            raise ValueError("num_heads, stack_sz, and d_model must be positive")
+        if d_model % num_heads != 0:
+            raise ValueError("d_model must be divisible by num_heads")
+        if not 0 <= dropout_probability < 1:
+            raise ValueError("dropout_probability must be in [0, 1)")
+
         self.d_model = d_model
         self.num_heads = num_heads
         self.stack_sz = stack_sz
