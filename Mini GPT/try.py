@@ -13,13 +13,6 @@ def ssoftmax(score):
         s2.append(nrow)
     return s2
 
-def scaled_softmax(score):
-    max_row = np.max(score, axis=-1, keepdims=True)
-    exp_scores = np.exp(score - max_row)
-    probabilities = exp_scores / np.sum(
-        exp_scores, axis=-1, keepdims=True
-    )
-    return probabilities
 
 score = np.array([
     [1.0, 2.0, 3.0],
