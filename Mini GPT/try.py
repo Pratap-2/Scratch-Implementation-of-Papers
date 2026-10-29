@@ -20,7 +20,7 @@ score = np.array([
     [4.0, 1.0, 0.0]
 ])
 
-p = scaled_softmax(score)
+p = ssoftmax(score)
 
 print(p)
 print(np.sum(p,axis=-1))
@@ -38,7 +38,7 @@ def self_attention(X,rng):
     attention = q @ k.T 
     attention /= np.sqrt(k.shape[1])
 
-    softmax = scaled_softmax(attention)
+    softmax = ssoftmax(attention)
 
     foutput = softmax @ v
 
@@ -65,7 +65,7 @@ def causal_implementation(previous_layer_output,rng,dim_k):
 
     attention = np.where(causal_mask,attention,-1e9)
 
-    softmax = scaled_softmax(attention)
+    softmax = ssoftmax(attention)
     
     foutput = softmax @ v
 
